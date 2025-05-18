@@ -18,15 +18,9 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-
 const AppDataSource = new DataSource({
   type: "mysql",
   url: process.env.DATABASEURL,
-  // host: dbUrl.hostname,
-  // port: parseInt(dbUrl.port),
-  // username: dbUrl.username,
-  // password: dbUrl.password,
-  // database: dbUrl.pathname.substring(1),
 
   // host: "localhost",
   // port: 3306,
