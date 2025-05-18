@@ -15,6 +15,15 @@ export class SaleController {
     }
   }
 
+  async getTotalSales(req: Request, resp: Response) {
+    try {
+      const data = await this.saleService.getTotalSales();
+      resp.status(200).send(data);
+    } catch (error: any) {
+      resp.status(400).send(error.message);
+    }
+  }
+
   async getSaleDetail(req: Request, resp: Response) {
     try {
       const { id } = req.params;

@@ -103,6 +103,12 @@ export class SaleService {
   //   return await saleRepository.save(saleObject);
   // }
 
+  async getTotalSales() {
+    return await saleRepository
+      .createQueryBuilder("s")
+      .select("COALESCE(SUM(s.total), 0)", "totalVentas")
+      .getRawOne();
+  }
   //COn transacciones
   async createSale(sale: any) {
     const { customer, saleDetails, notes, date } = sale;

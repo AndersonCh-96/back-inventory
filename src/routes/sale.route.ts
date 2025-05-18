@@ -7,5 +7,9 @@ export const sale_route = express.Router();
 const saleController = Container.get(SaleController);
 
 sale_route.get("/", saleController.getAllSales.bind(saleController));
+sale_route.get(
+  "/total-sales",
+  saleController.getTotalSales.bind(saleController)
+);
 sale_route.get("/:id", saleController.getSaleDetail.bind(saleController));
 sale_route.post("/create", saleController.createSale.bind(saleController));
