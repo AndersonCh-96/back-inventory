@@ -191,7 +191,9 @@ export class SaleService {
         });
 
         if (!inventory || inventory.stock < quantity) {
-          throw new Error(`Stock insuficiente para el producto`);
+          throw new Error(
+            `Stock insuficiente para el producto ${detail.product.name}`
+          );
         }
 
         inventory.stock -= quantity;
