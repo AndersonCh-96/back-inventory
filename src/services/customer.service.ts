@@ -32,6 +32,6 @@ export class CustomerService {
       throw new Error("Cliente no encontrado!");
     }
 
-    return await customerRepository.delete(findCustomer.id);
+    return await customerRepository.softDelete(findCustomer.id);
   }
 }

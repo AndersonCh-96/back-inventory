@@ -46,6 +46,9 @@ export class CustomerController {
       const customer = await this.customerService.deleteCustomer(id);
       resp.status(200).send(customer);
     } catch (error: any) {
+      if (error.code === "ER_ROW_IS_REFERENCED_2") {
+        resp.status(400).send("El cliente esta asociado a una venta");
+      }
       resp.send(error.message);
     }
   }
