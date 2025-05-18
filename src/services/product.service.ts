@@ -3,6 +3,7 @@ import { productRepository } from "../repositories/product.repository";
 import { error } from "console";
 import path from "path";
 import fs from "fs";
+import { cloudinary } from "../config/cloudinary";
 
 @Service()
 export class ProductService {
@@ -20,9 +21,16 @@ export class ProductService {
 
     const productData = {
       ...product,
-      image: file ? `/uploads/${file.filename}` : null,
+      image: file ? file.path : null,
     };
+
     return await productRepository.save(productData);
+
+    // const productData = {
+    //   ...product,
+    //   image: file ? `/uploads/${file.filename}` : null,
+    // };
+    // return await productRepository.save(productData);
   }
 
   async getOneProduct(id: any) {
@@ -41,26 +49,28 @@ export class ProductService {
     }
 
     if (file && findProduct.image) {
-      const imagePath = path.resolve(
-        "public",
-        "uploads",
-        path.basename(findProduct.image)
-      );
+      const publidId = this.getPublicIdFromUrl(findProduct.image);
+      await cloudinary.uploader.destroy(publidId);
+      // const imagePath = path.resolve(
+      //   "public",
+      //   "uploads",
+      //   path.basename(findProduct.image)
+      // );
 
-      if (fs.existsSync(imagePath)) {
-        fs.unlinkSync(imagePath);
-      }
+      // if (fs.existsSync(imagePath)) {
+      //   fs.unlinkSync(imagePath);
+      // }
     }
 
     if (file) {
-      product.image = `/uploads/${file.filename}`;
+      // product.image = `/uploads/${file.filename}`;
+      product.image = file.path;
     } else {
       product.image = findProduct.image;
     }
 
     await productRepository.update(findProduct.id, product);
 
-    console.log("finprod", findProduct);
     const updatedProduct = await productRepository.findOne({ where: { id } });
     return updatedProduct;
   }
@@ -73,5 +83,11 @@ export class ProductService {
 
     await productRepository.softDelete(findProduct.id);
     return findProduct;
+  }
+
+  getPublicIdFromUrl(url: any) {
+    const parts = url.split("/");
+    const folderAndFile = parts.slice(-2).join("/");
+    return folderAndFile.split(".")[0];
   }
 }

@@ -33,6 +33,7 @@ export class ProductController {
     try {
       const product = req.body;
       const file = req.file;
+
       const saveProduct = await this.productService.createProduct(
         product,
         file

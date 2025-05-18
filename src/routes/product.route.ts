@@ -1,7 +1,8 @@
 import express from "express";
 import Container from "typedi";
 import { ProductController } from "../controllers/product.controller";
-import upload from "../config/multer";
+import upload from "../config/cloudinaryStore";
+// import upload from "../config/multer";
 
 export const product_route = express.Router();
 

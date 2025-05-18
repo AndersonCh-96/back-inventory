@@ -20,13 +20,13 @@ dotenv.config();
 
 const AppDataSource = new DataSource({
   type: "mysql",
-  url: process.env.DATABASEURL,
+  // url: process.env.DATABASEURL,
 
-  // host: "localhost",
-  // port: 3306,
-  // username: "root",
-  // password: "root",
-  // database: "notes",
+  host: "localhost",
+  port: 3306,
+  username: "root",
+  password: "root",
+  database: "notes",
 
   ssl: false,
   synchronize: true,
