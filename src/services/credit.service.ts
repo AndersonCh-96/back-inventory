@@ -39,6 +39,7 @@ export class CreditService {
     const totalCredit = await creditRepository
       .createQueryBuilder("credit")
       .select("SUM(credit.dueAmount)", "total")
+      .where("credit.status = :status", { status: "Active" })
       .getRawOne();
     return totalCredit.total;
   }
