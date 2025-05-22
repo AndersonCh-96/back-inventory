@@ -18,7 +18,7 @@ export class SaleController {
   async getTotalSales(req: Request, resp: Response) {
     try {
       const data = await this.saleService.getTotalSales();
-      console.log("data", data);
+
       resp.status(200).send(data);
     } catch (error: any) {
       resp.status(400).send(error.message);
