@@ -15,6 +15,7 @@ export class ProductService {
     const findProduct = await productRepository.findOne({
       where: { code: product.code },
     });
+
     if (findProduct) {
       throw new Error("El producto con ese código ya éxiste");
     }
