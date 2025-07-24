@@ -22,13 +22,13 @@ export class Purchase {
   @Column({ type: "date", nullable: false })
   date!: Date;
 
-  @Column({ type: "double", nullable: false })
+  @Column({ type: "decimal", nullable: false })
   subtotal!: number;
 
   @Column({ type: "int", nullable: false })
   tax!: number;
 
-  @Column({ type: "double", nullable: false })
+  @Column({ type: "decimal", nullable: false })
   total!: number;
 
   @Column({ type: "text", nullable: true })

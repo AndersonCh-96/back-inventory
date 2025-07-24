@@ -19,19 +19,17 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const AppDataSource = new DataSource({
-  type: "mysql",
+  type: "postgres",
   url: process.env.DATABASEURL,
-
   // host: "localhost",
-  // port: 3306,
-  // username: "root",
+  // port: 5432,
+  // username: "postgres",
   // password: "root",
-  // database: "notes",
+  // database: "inventory",
 
   ssl: false,
   synchronize: true,
   logging: ["error"],
-  // logging: true,
   entities: [
     User,
     Product,
@@ -49,7 +47,6 @@ const AppDataSource = new DataSource({
 
   migrations: [],
   subscribers: [PurchaseSubscriber, SaleSubscriber],
-  connectorPackage: "mysql2",
 });
 
 export default AppDataSource;

@@ -16,13 +16,13 @@ export class Sale {
   @PrimaryGeneratedColumn("uuid")
   id!: string;
 
-  @Column({ nullable: false, type: "double" })
+  @Column({ nullable: false, type: "decimal" })
   subtotal!: number;
 
-  @Column({ nullable: false, type: "double" })
+  @Column({ nullable: false, type: "decimal" })
   total!: number;
 
-  @Column({ nullable: false, type: "double" })
+  @Column({ nullable: false, type: "decimal" })
   tax!: number;
 
   @Column({ nullable: false, type: "text" })

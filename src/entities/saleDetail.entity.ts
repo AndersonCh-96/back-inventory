@@ -17,10 +17,10 @@ export class SaleDetail {
   @Column({ nullable: false, type: "int" })
   quantity!: number;
 
-  @Column({ nullable: false, type: "double" })
+  @Column({ nullable: false, type: "decimal" })
   unitCost!: number;
 
-  @Column({ nullable: false, type: "double" })
+  @Column({ nullable: false, type: "decimal" })
   subtotal!: number;
 
   @Column({ nullable: false, type: "int" })

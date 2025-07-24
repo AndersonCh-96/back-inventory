@@ -16,7 +16,7 @@ export class Payment {
   @Column({ nullable: false, type: "enum", enum: ["Cash", "Transfer"] })
   type!: string;
 
-  @Column({ nullable: false, type: "double" })
+  @Column({ nullable: false, type: "decimal" })
   amount!: number;
 
   @Column({ type: "varchar", length: 36, nullable: true })

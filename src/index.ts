@@ -40,6 +40,6 @@ app.use("/api/provider", provider_route);
 app.use("/api/purchase", route_purchase);
 app.use("/api/inventory", route_inventory);
 app.use("/api/inventory-movements", route_inventoryMovements);
-app.listen(process.env.PORT, () => {
-  console.log(`Server run on port ${process.env.PORT}`);
+app.listen(process.env.PORT || 3000, () => {
+  console.log(`Server run on port ${process.env.PORT || 3000}`);
 });

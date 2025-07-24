@@ -17,10 +17,10 @@ export class PurchaseDetail {
   @Column({ nullable: false, type: "int" })
   quantity!: number;
 
-  @Column({ nullable: false, type: "double" })
+  @Column({ nullable: false, type: "decimal" })
   price!: number;
 
-  @Column({ nullable: false, type: "double" })
+  @Column({ nullable: false, type: "decimal" })
   total!: number;
 
   @ManyToOne(() => Product, (product: Product) => product.id,{onDelete:'RESTRICT'})

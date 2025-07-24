@@ -20,7 +20,7 @@ export class Product {
   @Column({ nullable: false, type: "varchar", unique: true, length:255 })
   code!: string;
 
-  @Column({ nullable: false, type: "double" })
+  @Column({ nullable: false, type: "decimal" })
   price!: number;
 
   @Column({ nullable: false, type: "int" })

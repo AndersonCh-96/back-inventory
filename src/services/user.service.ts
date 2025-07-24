@@ -21,6 +21,7 @@ export class UserService {
     const findUser = await userRepository.findOne({
       where: { email: user.email },
     });
+
     if (findUser) {
       throw new Error("Correo electronico ya registrado!");
     }
