@@ -17,7 +17,7 @@ import { route_inventory } from "./routes/inventory.route";
 import path from "path";
 import { route_inventoryMovements } from "./routes/inventroyMovements.route";
 
-dotenv.config();
+//dotenv.config();
 AppDataSource.initialize();
 
 app.use(express.json());
